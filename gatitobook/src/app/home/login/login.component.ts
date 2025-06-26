@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import loginFields from '../../types/loginFields';
 import { AuthenticationService } from '../../authentication/authentication.service';
 import { Router } from '@angular/router';
 

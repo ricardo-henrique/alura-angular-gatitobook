@@ -1,16 +1,66 @@
 <h4 class="text-center">Registre-se</h4>
-<form action="" class="form mt-4">
+<form
+  action=""
+  class="form mt-4"
+  [formGroup]="newUserForm"
+  (submit)="register()"
+>
   <div class="form-group">
-    <input class="form-control" placeholder="e-mail" />
+    <input class="form-control" placeholder="e-mail" formControlName="email" />
+    <app-message
+      *ngIf="
+        newUserForm.get('email')?.errors?.required &&
+        newUserForm.get('email')?.touched
+      "
+      message="E-mail Obrigatório"
+    ></app-message>
+    <app-message
+      *ngIf="
+        newUserForm.get('email')?.errors?.email &&
+        newUserForm.get('email')?.touched
+      "
+      message="E-mail no formato incorreto"
+    ></app-message>
   </div>
   <div class="form-group">
-    <input class="form-control" placeholder="nome completo" />
+    <input
+      class="form-control"
+      placeholder="nome completo"
+      formControlName="fullName"
+    />
+    <app-message
+      *ngIf="
+        newUserForm.get('fullName')?.errors &&
+        newUserForm.get('fullName')?.touched
+      "
+      message="Nome incorreto"
+    ></app-message>
   </div>
   <div class="form-group">
-    <input class="form-control" placeholder="Usuario" />
+    <input
+      class="form-control"
+      placeholder="Usuario"
+      formControlName="userName"
+    />
+    <app-message
+      *ngIf="
+        newUserForm.get('userName')?.errors?.lowercase &&
+        newUserForm.get('userName')?.touched
+      "
+      message="Usuario deve ser em letra minúscula"
+    ></app-message>
+    <app-message
+      *ngIf="newUserForm.get('userName')?.errors?.existingUser"
+      message="Usuário já existe"
+    ></app-message>
   </div>
   <div class="form-group">
-    <input class="form-control" type="password" placeholder="Senha" />
+    <input
+      class="form-control"
+      type="password"
+      placeholder="Senha"
+      formControlName="password"
+    />
   </div>
   <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
 </form>
