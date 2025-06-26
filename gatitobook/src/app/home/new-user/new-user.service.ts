@@ -1,16 +1,15 @@
 import { NewUser } from './new-user';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NewUserService {
-  constructor(private http: HttpClient, private route: Router) {}
+  constructor(private http: HttpClient) {}
 
-  registerNewUser(newUser: NewUser) {
-    return this.http.post('http://localhost:300/user/signup', newUser);
+  registerNewUser(novoUsuario: NewUser) {
+    return this.http.post('http://localhost:3000/user/signup', novoUsuario);
   }
 
   userExistenceCheck(userName: string) {
