@@ -10,7 +10,7 @@ export class AuthenticationService {
 
   authenticate(user: string, password: string): Observable<any> {
     return this.http.post('http://localhost:3000/user/login', {
-      user: user,
+      userName: user,
       password: password,
     });
   }

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  user = '';
+  usuario = '';
   password = '';
 
   constructor(private auth: AuthenticationService, private router: Router) {}
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login() {
-    this.auth.authenticate(this.user, this.password).subscribe(
+    this.auth.authenticate(this.usuario, this.password).subscribe(
       () => {
         this.router.navigate(['animals']);
       },
